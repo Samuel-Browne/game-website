@@ -6,13 +6,15 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class GiantBombService {
-  private apiKey = '5830cac61d28c99b6f8810d6624ca7fd0351bfb6';
-  private apiUrl = 'https://www.giantbomb.com/api/';
-
   constructor(private http: HttpClient) {}
 
-  getGameData(gameId: string): Observable<any> {
-    const url = `${this.apiUrl}game/${gameId}/?api_key=${this.apiKey}&format=json`;
+  getGameData(): Observable<any> {
+    const url = 'http://localhost:3000/api/games';
+    return this.http.get<any>(url);
+  }
+
+  getNintendoDsGamesData(): Observable<any> {
+    const url = 'http://localhost:3000/api/nintendoDsGames';
     return this.http.get<any>(url);
   }
 }
