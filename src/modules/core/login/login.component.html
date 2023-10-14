@@ -1,0 +1,27 @@
+<form (ngSubmit)="onSubmit()">
+  <div
+    class="d-flex align-items-center justify-content-center"
+    style="height: 1200px"
+  >
+    <div class="container">
+      <div class="row">
+        <h1>Login</h1>
+      </div>
+      <div class="row">
+        <mat-form-field>
+          <mat-label>Username</mat-label>
+          <input matInput formControlName="username" />
+        </mat-form-field>
+      </div>
+      <div class="row">
+        <mat-form-field>
+          <mat-label>Password</mat-label>
+          <input matInput formControlName="password" type="password"/>
+        </mat-form-field>
+      </div>
+      <div class="row">
+        <button mat-button type="submit">Login</button>
+      </div>
+    </div>
+  </div>
+</form>
