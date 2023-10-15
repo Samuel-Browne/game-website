@@ -18,7 +18,9 @@
       <p>Release Date : {{ item.original_release_date | date }}</p>
     </div>
     <div class="col-4">
-      <img src="{{ item.image.icon_url }}" />
+      <a href="{{ item.guid }}">
+        <img src="{{ item.image.icon_url }}" />
+      </a>
     </div>
   </div>
 </div>
