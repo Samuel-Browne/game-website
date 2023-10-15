@@ -1,8 +1,8 @@
 <div class="container mx-auto">
   <div class="row">
     <div class="col-sm">
-      <p>{{ gameData.name }}</p>
-      <p>{{ gameData.original_release_date | date }}</p>
+      <h1>{{ gameData.name }}</h1>
+      <p>Release Date: {{ gameData.original_release_date | date }}</p>
       <p>{{ gameData.deck }}</p>
       <img src="{{ gameData.image.screen_large_url }}" />
       <div *ngFor="let item of gameData.platforms">{{ item.name }}</div>
