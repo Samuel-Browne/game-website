@@ -48,6 +48,8 @@ export class HomeComponent {
   }
 
   onPaginateForward() {
+    this.isLoading = true;
+
     this.pageNumber = String(Number(this.pageNumber) + 1);
     this.giantBombService.getGameData().subscribe((data) => {
       this.data = data.results;
@@ -57,6 +59,11 @@ export class HomeComponent {
 
     this.giantBombService
       .getNintendoDsGamesData(this.pageNumber)
+      .pipe(
+        finalize(() => {
+          this.isLoading = false;
+        })
+      )
       .subscribe((data) => {
         this.nintendoDsGames = data.results;
         console.log(this.data);
@@ -64,6 +71,7 @@ export class HomeComponent {
   }
 
   onPaginateBackward() {
+    this.isLoading = true;
     this.pageNumber = String(Number(this.pageNumber) - 1);
     this.giantBombService.getGameData().subscribe((data) => {
       this.data = data.results;
@@ -73,6 +81,11 @@ export class HomeComponent {
 
     this.giantBombService
       .getNintendoDsGamesData(this.pageNumber)
+      .pipe(
+        finalize(() => {
+          this.isLoading = false;
+        })
+      )
       .subscribe((data) => {
         this.nintendoDsGames = data.results;
         console.log(this.data);
