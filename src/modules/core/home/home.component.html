@@ -9,8 +9,10 @@
       />
     </div>
   </div>
-
   <div>
+    <mat-progress-bar mode="buffer" *ngIf="isLoading"></mat-progress-bar>
+  </div>
+  <div class="mt-5">
     <button (click)="onPaginateBackward()">Previous</button>
     <button (click)="onPaginateForward()">Next</button>
   </div>

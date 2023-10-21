@@ -14,6 +14,7 @@ export class HomeComponent {
   private subs = new SubSink();
 
   data: any;
+  isLoading: boolean = false;
 
   nintendoDsGames: any;
   pageNumber: string = '2';
@@ -22,14 +23,24 @@ export class HomeComponent {
     private giantBombService: GiantBombService,
     private router: Router
   ) {
-    this.giantBombService.getGameData().subscribe((data) => {
-      this.data = data.results;
-      console.log(this.data);
-      console.log(data.results.length);
-    });
+    this.isLoading = true;
+    this.giantBombService
+      .getGameData()
+      .pipe(finalize(() => {}))
+      .subscribe((data) => {
+        this.data = data.results;
+
+        console.log(this.data);
+        console.log(data.results.length);
+      });
 
     this.giantBombService
       .getNintendoDsGamesData(this.pageNumber)
+      .pipe(
+        finalize(() => {
+          this.isLoading = false;
+        })
+      )
       .subscribe((data) => {
         this.nintendoDsGames = data.results;
         console.log(this.data);
