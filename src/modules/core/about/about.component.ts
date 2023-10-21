@@ -13,6 +13,8 @@ export class AboutComponent {
 
   gameData: any;
 
+  screenshots: string[] = [];
+
   constructor(
     private router: Router,
     private activatedRoute: ActivatedRoute,
@@ -26,6 +28,12 @@ export class AboutComponent {
 
     this.giantBombService.getGameDatabyGuid(this.guid).subscribe((data) => {
       this.gameData = data.results;
+
+      for (let item of this.gameData.images) {
+        if (item.tags.includes('Screenshots')) {
+          this.screenshots.push(item.original);
+        }
+      }
     });
   }
 }
