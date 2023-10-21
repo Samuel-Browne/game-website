@@ -14,6 +14,7 @@ export class AboutComponent {
   gameData: any;
 
   screenshots: string[] = [];
+  gameRating: string = '';
 
   constructor(
     private router: Router,
@@ -32,6 +33,12 @@ export class AboutComponent {
       for (let item of this.gameData.images) {
         if (item.tags.includes('Screenshots')) {
           this.screenshots.push(item.original);
+        }
+      }
+
+      for (let item of this.gameData.original_game_rating) {
+        if (item.name.includes('ESRB')) {
+          this.gameRating = item.name;
         }
       }
     });

@@ -15,13 +15,14 @@
           {{ item.name }}
         </ng-container>
       </p>
+
+      <p>{{ gameRating }}</p>
+
       <p>{{ gameData.deck }}</p>
       <img src="{{ gameData.image.screen_large_url }}" class="img-fluid" />
+
+      <p>Platforms</p>
       <div *ngFor="let item of gameData.platforms">{{ item.name }}</div>
-      <p>Characters:</p>
-      <ul>
-        <li *ngFor="let item of gameData.characters">{{ item.name }}</li>
-      </ul>
     </div>
     <div class="row">
       <div *ngFor="let item of screenshots" class="col-sm-3">
