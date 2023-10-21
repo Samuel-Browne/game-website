@@ -16,6 +16,7 @@ export class HomeComponent {
   data: any;
 
   nintendoDsGames: any;
+  pageNumber: string = '2';
 
   constructor(
     private giantBombService: GiantBombService,
@@ -24,12 +25,47 @@ export class HomeComponent {
     this.giantBombService.getGameData().subscribe((data) => {
       this.data = data.results;
       console.log(this.data);
+      console.log(data.results.length);
     });
 
-    this.giantBombService.getNintendoDsGamesData().subscribe((data) => {
-      this.nintendoDsGames = data.results;
+    this.giantBombService
+      .getNintendoDsGamesData(this.pageNumber)
+      .subscribe((data) => {
+        this.nintendoDsGames = data.results;
+        console.log(this.data);
+      });
+  }
+
+  onPaginateForward() {
+    this.pageNumber = String(Number(this.pageNumber) + 1);
+    this.giantBombService.getGameData().subscribe((data) => {
+      this.data = data.results;
       console.log(this.data);
+      console.log(data.results.length);
     });
+
+    this.giantBombService
+      .getNintendoDsGamesData(this.pageNumber)
+      .subscribe((data) => {
+        this.nintendoDsGames = data.results;
+        console.log(this.data);
+      });
+  }
+
+  onPaginateBackward() {
+    this.pageNumber = String(Number(this.pageNumber) - 1);
+    this.giantBombService.getGameData().subscribe((data) => {
+      this.data = data.results;
+      console.log(this.data);
+      console.log(data.results.length);
+    });
+
+    this.giantBombService
+      .getNintendoDsGamesData(this.pageNumber)
+      .subscribe((data) => {
+        this.nintendoDsGames = data.results;
+        console.log(this.data);
+      });
   }
 
   ngOnDestroy() {

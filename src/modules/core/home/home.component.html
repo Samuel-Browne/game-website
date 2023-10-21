@@ -10,6 +10,11 @@
     </div>
   </div>
 
+  <div>
+    <button (click)="onPaginateBackward()">Previous</button>
+    <button (click)="onPaginateForward()">Next</button>
+  </div>
+
   <div class="row mt-1" *ngFor="let item of nintendoDsGames">
     <div class="col-4">
       <p>{{ item.name }}</p>

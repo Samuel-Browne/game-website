@@ -13,9 +13,9 @@ export class GiantBombService {
     return this.http.get<any>(url);
   }
 
-  getNintendoDsGamesData(): Observable<any> {
+  getNintendoDsGamesData(pageNumber: string): Observable<any> {
     const url = 'http://localhost:3000/api/nintendoDsGames';
-    return this.http.get<any>(url);
+    return this.http.post<any>(url, { pageNumber });
   }
 
   getGameDatabyGuid(guid: string): Observable<any> {
